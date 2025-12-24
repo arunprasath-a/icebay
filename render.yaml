@@ -1,4 +1,4 @@
 staticSites:
   - name: icebay-clone
     buildCommand: npm install && npm run build
-    publishPath: ./dist
+    publishPath: ./build
