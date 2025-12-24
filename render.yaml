@@ -1,6 +1,4 @@
-services:
-  - type: web
-    name: icebay-clone
-    env: static
+staticSites:
+  - name: icebay-clone
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    publishPath: ./dist
