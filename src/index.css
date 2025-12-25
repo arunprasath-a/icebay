@@ -1,89 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;900&display=swap');
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap');
 
-:root {
-  --primary-yellow: #EECF1C;
-  --primary-blue: #1565C0;
-  --text-dark: #1a1a1a;
-  --text-light: #ffffff;
-  --background-light: #f8f9fa;
-
+@theme {
   --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --color-brand-navy: #0F172A;
+  --color-brand-blue: #1E3A8A;
+  --color-brand-mango: #FACC15;
+  --color-brand-cream: #F8FAFC;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+
+  /* ROOT SCROLLBAR FIX */
+  html {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* Consistent scrollbar gutter */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-navy);
+    line-height: 1.6;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    /* Prevent body from creating its own scrollbar */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-brand-navy);
+    /* DEFAULT COLOR */
+  }
 }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--background-light);
-  color: var(--text-dark);
-  line-height: 1.6;
+/* Custom Animations */
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* Custom Swiper Fixes */
+.swiper-slide {
+  height: auto !important;
 }
 
-ul {
-  list-style: none;
+/* Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+::-webkit-scrollbar-track {
+  background: white;
 }
 
-/* Utilities */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  /* Slate-300 */
+  border-radius: 5px;
+  border: 2px solid white;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-primary {
-  background-color: var(--primary-yellow);
-  color: var(--text-dark);
-}
-
-.btn-primary:hover {
-  background-color: #dcb80e;
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary-yellow);
-  color: var(--primary-yellow);
-}
-
-.btn-outline:hover {
-  background-color: var(--primary-yellow);
-  color: var(--text-dark);
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+  /* Slate-400 */
 }

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import Hero from '../components/Hero';
+import HeroSlider from '../components/HeroSlider';
+import ProductSlider from '../components/ProductSlider';
+import ScrollReveal from '../components/ScrollReveal';
 import AboutSection from '../components/AboutSection';
-import Flavours from '../components/Flavours';
 import ContactBanner from '../components/ContactBanner';
+import SEO from '../components/SEO';
 
 const Home = () => {
     useEffect(() => {
@@ -10,11 +12,25 @@ const Home = () => {
     }, []);
 
     return (
+        /* REMOVED overflow-x-hidden to prevent double scrollbars on windows */
         <div className="home-page">
-            <Hero />
-            <AboutSection />
-            <Flavours />
-            <ContactBanner />
+            <SEO
+                title="Home"
+                description="Welcome to IceBay - The coolest popsicle chain in town. Experience natural flavors like never before."
+            />
+            <HeroSlider />
+
+            <ScrollReveal variant="fadeUp">
+                <AboutSection />
+            </ScrollReveal>
+
+            <ScrollReveal variant="slideInRight">
+                <ProductSlider />
+            </ScrollReveal>
+
+            <ScrollReveal variant="fadeUp">
+                <ContactBanner />
+            </ScrollReveal>
         </div>
     );
 };
