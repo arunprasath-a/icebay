@@ -5,30 +5,42 @@ import { motion } from 'framer-motion';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
+import icebayVideo from '../assets/icebay_vid1.mp4';
+import slider1 from '../assets/icebay_slider1.jfif';
+import slider3 from '../assets/icebay_slider3.avif';
+import slider4 from '../assets/icebay_slider4.avif';
 
 // Using strictly verified High-Res Unsplash IDs that ARE confirmed to work
 const slides = [
     {
         id: 1,
-        image: 'https://images.unsplash.com/photo-1502164980785-f8aa41d53611?w=1920&q=80', // Red Strawberry Popsicles
+        image: slider1, // Red Strawberry Popsicles
         title: 'PURE FRUIT PULP',
         subtitle: '100% NATURAL & FRESH',
         buttonText: 'VIEW FLAVOURS',
     },
     {
         id: 2,
-        image: 'https://images.unsplash.com/photo-1543648964-18ab2541f71a?w=1920&q=80', // Assorted Popsicles
+        video: icebayVideo,
+        title: 'EXPERIENCE ICEBAY',
+        subtitle: 'REFRESHING MOMENTS',
+        buttonText: 'EXPLORE NOW'
+    },
+    {
+        id: 3,
+        image: slider3, // Assorted Popsicles
         title: 'FASTEST GROWING',
         subtitle: 'POPSICLE CHAIN IN INDIA',
         buttonText: 'FRANCHISE ENQUIRY',
     },
     {
-        id: 3,
-        image: 'https://images.unsplash.com/photo-1562602833-0f49213759bb?w=1920&q=80', // Tropical Vibes
+        id: 4,
+        image: slider4, // Tropical Vibes
         title: 'SPREAD HAPPINESS',
         subtitle: 'SHARE A STICK TODAY',
         buttonText: 'CONTACT US',
     }
+
 ];
 
 const HeroSlider = () => {
@@ -53,17 +65,28 @@ const HeroSlider = () => {
                     <SwiperSlide key={slide.id} className="relative h-full w-full overflow-hidden">
                         {({ isActive }) => (
                             <div className="relative h-full w-full">
-                                {/* Background Image */}
+                                {/* Background Image or Video */}
                                 <div className="absolute inset-0 transition-opacity duration-1000">
-                                    <img
-                                        src={slide.image}
-                                        alt={slide.title}
-                                        className="h-full w-full object-cover"
-                                        loading="eager"
-                                        onError={(e) => {
-                                            e.target.src = 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d1?w=1920'; // Ultimate Fallback
-                                        }}
-                                    />
+                                    {slide.video ? (
+                                        <video
+                                            src={slide.video}
+                                            className="h-full w-full object-cover"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                        />
+                                    ) : (
+                                        <img
+                                            src={slide.image}
+                                            alt={slide.title}
+                                            className="h-full w-full object-cover"
+                                            loading="eager"
+                                            onError={(e) => {
+                                                e.target.src = 'https://images.unsplash.com/photo-1505394033641-40c6ad1178d1?w=1920'; // Ultimate Fallback
+                                            }}
+                                        />
+                                    )}
                                     <div className="absolute inset-0 bg-black/50 bg-gradient-to-r from-black/60 to-transparent" />
                                 </div>
 

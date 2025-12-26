@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import logo from '../assets/icebay_logo.avif';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +18,21 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-navy/95 backdrop-blur-md py-4 shadow-xl' : 'bg-transparent py-8'}`}>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-                <Link to="/" className="text-3xl font-black tracking-tighter text-white">
-                    ICE <span className="text-brand-mango">BAY</span>
+                <Link
+                    to="/"
+                    className="flex items-center gap-4 group"
+                >
+                    <div className="relative">
+                        <img
+                            src={logo}
+                            alt="IceBay Logo"
+                            className="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute -inset-2 bg-brand-mango/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <span className="text-3xl md:text-4xl font-black tracking-tighter text-white">
+                        ICE <span className="text-brand-mango">BAY</span>
+                    </span>
                 </Link>
 
                 {/* Mobile Toggle */}
