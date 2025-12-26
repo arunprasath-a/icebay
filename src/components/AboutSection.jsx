@@ -1,4 +1,5 @@
 import React from 'react';
+import icebayVideo from '../assets/icebay_aboutus.mp4';
 
 const AboutSection = () => {
     return (
@@ -6,10 +7,18 @@ const AboutSection = () => {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="w-full md:w-1/2 relative">
                     <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
-                        <img
+                        {/* <img
                             src="https://images.unsplash.com/photo-1549395156-e8c1e9f43adf?q=80&w=1200&auto=format&fit=crop"
                             alt="Ice Bay Story"
                             className="w-full h-[500px] object-cover"
+                        /> */}
+                        <video
+                            src={icebayVideo}
+                            className="h-[500px] w-full object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
                         />
                     </div>
                     {/* Decorative element */}
